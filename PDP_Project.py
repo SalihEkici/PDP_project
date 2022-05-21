@@ -1,6 +1,13 @@
 import RPi.GPIO as GPIO
 import time
 
+from pushbullet import PushBullet
+import key
+
+#API key which is retrieved from another file
+API_KEY = key.API_KEY
+pb = PushBullet(API_KEY)
+
 # change these as desired - they're the pins connected from the
 # SPI port on the ADC to the Cobbler
 SPICLK = 11
@@ -70,7 +77,8 @@ def main():
                 else:
                         print("There is a gas leak")
                         time.sleep(0.5)
-
+                        push = pb.push_note("ALERT","There is a gas leak!!")
+                time.sleep(2)
 if __name__ =='__main__':
          try:
                   main()
