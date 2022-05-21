@@ -1,3 +1,4 @@
+#Salih Ekici r0883622
 import RPi.GPIO as GPIO
 import time
 
